@@ -9,9 +9,9 @@ Mariano Labariñas
 
 * ¿Quienes Somos?
 
-.image ./course/gustavo.png _ _
+.image ./resources/gustavo.png _ _
 
-.image ./course/mariano.png _ _
+.image ./resources/mariano.png _ _
 
 * Motivación
 
@@ -52,24 +52,24 @@ Mariano Labariñas
 
 Docker
 
-.image ./course/docker.png _ _
+.image ./resources/docker.png _ _
 
 * ¿Proyectos hechos en GO?
 
 Kubernetes
 
-.image ./course/kubernetes.png _ _
+.image ./resources/kubernetes.png _ _
 
 
 * ¿Proyectos hechos en GO?
 
 CockroachDB (beta)
 
-.image ./course/cockroach.png _ _
+.image ./resources/cockroach.png _ _
 
 * ¿Proyectos hechos en GO?
 
-.image ./course/others.png _ _
+.image ./resources/others.png _ _
 
 * ¿Paradigma?
 
@@ -129,7 +129,7 @@ GOPATH
 
 *0* para tipos numéricos - *false* para booleanos - *""* (string vacio) para strings
 
-.play course/src/zeroValue.go
+.play ./resources/src/zeroValue.go
 
 
 
