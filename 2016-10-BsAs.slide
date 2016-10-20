@@ -1,0 +1,140 @@
+Curso introductorio a Golang
+
+Buenos Aires
+Noviembre 2016
+
+Gustavo Rodriguez
+Mariano Labariñas
+
+
+* ¿Quienes Somos?
+
+.image ./course/gustavo.png _ _
+
+.image ./course/mariano.png _ _
+
+* Motivación
+
+- El lenguaje Golang, arranca como un proyecto en 2007 dentro de Google. Los objetivos del proyecto eran eliminar la lentitud y la torpeza a la hora de desarrollar software en Google.
+- Fue anunciado al mundo a fines del 2009, y en 2012 se estabiliza la API creando la versión 1.0 . La versión actual es la 1.7.x y los cambios en la API fueron mínimos.
+- Los desarrolladores trabajando en Google están en sus primeros años de carrera y se encuentran más familiarizados con lenguajes “procedurales” como “C”.
+- Es imperativo que los desarrolladores puedan ser productivos muy rápidamente en lenguajes y herramientas que no pueden ser “muy radicales”
+- El lenguaje fue diseñado para personas que escriben, leen y “debugean” grandes piezas de software
+
+* Motivación: Objetivos
+
+- Que fuera simple para escribir (menos es más). 
+- Que fuera simple para leer (nos pasamos mucho tiempo leyendo código de otras personas).
+- Concurrente (multi-core, asincrónico).
+- Que compile a código nativo y rápido.
+- Que tenga un memory footprint bajo.
+
+* Motivación
+
+- *El*"sweet*spot"*de*Go*esta*en*escribir*software*de*backend*
+
+- "Go is a good general purpose language, but the sweet spot it was designed for is writing large-scale, concurrent, server-side software.""
+
+* Algunos proyectos que incluyen Go
+
+- YouTube 
+- dl.google.com
+- Booking.com
+- Blogger
+- Datadog
+- Facebook
+- Github
+- Google Code 
+- Netflix
+- Mercadolibre ;)
+
+* ¿Proyectos hechos en GO?
+
+Docker
+
+.image ./course/docker.png _ _
+
+* ¿Proyectos hechos en GO?
+
+Kubernetes
+
+.image ./course/kubernetes.png _ _
+
+
+* ¿Proyectos hechos en GO?
+
+CockroachDB (beta)
+
+.image ./course/cockroach.png _ _
+
+* ¿Proyectos hechos en GO?
+
+.image ./course/others.png _ _
+
+* ¿Paradigma?
+
+- Imperativo
+- Estructurado
+- No orientado a objetos (¿?)
+
+* Go Basics
+
+- Fuertemente tipado
+- Inferencia de tipos
+- Funciones son “first class citizen”, las funciones pueden ser pasadas como parámetros
+- Parámetros pasados siempre por “valor”
+- Punteros para pasar parámetros por “referencia”
+- GC
+- “Semi” Orientado a objetos -> Composition
+- Interfaces
+- Built in Web Server
+- Built in Testing framework
+
+
+* Instalando GO!
+
+- Descarga la versión para tu OS desde [[https://golang.org/dl/][AQUÍ]]
+- Abrí el pkg y seguí las instrucciones en pantalla, Golang quedará instalado por default en -> /usr/local/go
+- Exportar GOROOT y GOPATH, agregar  GOROOT/bin al PATH y LISTO :)
+- Para chequear tu la instalación correcta tipear -> go version 
+
+* Go Basics: Workspace
+
+GOPATH
+	|_ BIN: Contiene los archivos ejecutables
+	|_ SRC: Contiene los fuentes organizados en paquetes
+	|_ PKG: Contiene los paquetes en formato binario
+
+* Tipos Básicos
+
+- bool
+- string
+- int  int8  int16  int32  int64
+- uint uint8 uint16 uint32 uint64 uintptr
+- byte // alias for uint8
+- rune // alias for int32 - unicode code point
+- float32 float64
+- complex64 complex128
+
+* Inicialización de Variables
+
+
+	var s string
+	var s string = ""
+	var s = ""
+	s:=""
+
+
+*Zero* *value:*
+
+*0* para tipos numéricos - *false* para booleanos - *""* (string vacio) para strings
+
+.play course/src/zeroValue.go
+
+
+
+
+
+
+
+
