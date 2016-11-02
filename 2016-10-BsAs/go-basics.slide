@@ -33,7 +33,7 @@ Mariano Labariñas
 
 - *El*"sweet*spot"*de*Go*esta*en*escribir*software*de*backend*
 
-- "Go is a good general purpose language, but the sweet spot it was designed for is writing large-scale, concurrent, server-side software.""
+- "Go is a good general purpose language, but the sweet spot it was designed for is writing large-scale, concurrent, server-side software"
 
 * Algunos proyectos que incluyen Go
 
@@ -59,7 +59,6 @@ Docker
 Kubernetes
 
 .image ./resources/kubernetes.png _ _
-
 
 * ¿Proyectos hechos en GO?
 
@@ -95,8 +94,18 @@ CockroachDB (beta)
 
 - Descarga la versión para tu OS desde [[https://golang.org/dl/][AQUÍ]]
 - Abrí el pkg y seguí las instrucciones en pantalla, Golang quedará instalado por default en -> /usr/local/go
-- Exportar GOROOT y GOPATH, agregar  GOROOT/bin al PATH y LISTO :)
+- Exportar GOROOT apuntando a directorio de instalación, agregar  GOROOT/bin al PATH y LISTO :)
 - Para chequear tu la instalación correcta tipear -> go version 
+
+* ¿Donde programar?
+
+- [[https://github.com/joefitzgerald/go-plus][Plugin para Atom]]
+- [[https://goclipse.github.io][Plugin para Eclipse]]
+- [[hhttps://plugins.jetbrains.com/plugin/?id=5047][Plugin para IntelliJ]]
+- [[https://github.com/DisposaBoy/GoSublime][Plugin para Sublime]]
+- [[https://github.com/Microsoft/vscode-go][Plugin para Visual Studio Code]]
+- [[https://github.com/visualfc/liteide][Lite Ide: Go IDE]]
+- [[https://github.com/golang/go/wiki/IDEsAndTextEditorPlugins][Varios mas... ]]
 
 * Go Basics: Workspace
 
@@ -104,6 +113,23 @@ GOPATH
 	|_ BIN: Contiene los archivos ejecutables
 	|_ SRC: Contiene los fuentes organizados en paquetes
 	|_ PKG: Contiene los paquetes en formato binario
+
+
+* Hello world!!
+
+.play ./resources/src/00_hello_world/main.go
+
+Comandos básicos desde consola
+
+	go command [arguments]
+
+	build     Compila paquetes y dependencias
+	clean     Remueve archivos object     
+	get       Descarga e instala paquetes y dependencias
+	install   Compila e instala paquetes y dependencias
+	run       Compila y corre paquetes y dependencias
+	test      Testea paquetes
+	...
 
 * Tipos Básicos
 
@@ -116,25 +142,399 @@ GOPATH
 - float32 float64
 - complex64 complex128
 
-* Inicialización de Variables
+* Constantes
 
+- Pueden ser del tipo: character, string, boolean o valores numéricos
+
+- Ejemplos:
+
+	const World = "世界"
+	const Truth = true
+
+
+* Inicialización de Variables
 
 	var s string
 	var s string = ""
 	var s = ""
 	s:=""
 
-
 *Zero* *value:*
 
 *0* para tipos numéricos - *false* para booleanos - *""* (string vacio) para strings
 
-.play ./resources/src/zeroValue.go
+.play ./resources/src/01_zero_values/main.go
+
+* Tipos de if
+
+	if x < 0 { }
+
+	if v := math.Pow(x, n); v < lim {}
+
+	if ... {} else { }
+
+* Iteraciones #1
+
+_for_initialization;_condition;_post_{_}_
+
+.play ./resources/src/02_iterations/0/main.go
+
+* Iteraciones #2
+
+_for_condition_{_}_
+
+.play ./resources/src/02_iterations/1/main.go
+
+* Iteraciones #3
+
+_for_{_}_
+
+.play ./resources/src/02_iterations/2/main.go
+
+* Iteraciones #4
+
+_using_range_
+
+.play ./resources/src/02_iterations/3/main.go
+
+* Switch
+
+.play ./resources/src/02_iterations/4/main.go
+
+* Funciones
+
+.play ./resources/src/03_functions/main.go
+
+* Paquetes
+
+.code ./resources/src/04_packages/math/math.go
+.play ./resources/src/04_packages/main.go
+
+* Conversión de variables
+
+.play ./resources/src/05_variables_type_convertion/main.go
+
+* Punteros
+
+.play ./resources/src/06_pointers/main.go
+
+* Tipo de datos
+
+.code ./resources/src/07_types/main.go /START OMIT/,/END OMIT/
+
+* Tipo de datos - continuación
+
+.play ./resources/src/07_types/main.go /^func main/,/^}/
+
+* Structs - inicialización
+
+	type Vertex struct {
+		X, Y int
+	}
+
+	var (
+		v1 = Vertex{1, 2}  // has type Vertex
+		v2 = Vertex{X: 1}  // Y:0 is implicit
+		v3 = Vertex{}      // X:0 and Y:0
+		p  = &Vertex{1, 2} // has type *Vertex
+	)
+
+* Structs 
+
+	type tree struct {
+		value       int
+		left, right *tree
+	}
+
+	func add(t *tree, value int) *tree {
+		if t == nil {
+			// Equivalent to return &tree{value: value}.
+			t = new(tree)
+			t.value = value
+			return t
+		}
+		if value < t.value {
+			t.left = add(t.left, value)
+		} else {
+			t.right = add(t.right, value)
+		}
+		return t
+	}
+
+* Collections #1
+
+Array Loop
+
+.play ./resources/src/09_collections/1/main.go
 
 
+* Collections #2
+
+Slices
+
+	months := [...]string{1: "January", /* ... */, 12: "December"}
+	Q2 := months[4:7]                                      summer := months[6:9]
+	fmt.Println(Q2)     // ["April" "May" "June"]          fmt.Println(summer) // ["June" "July" "August"]”
+
+.image ./resources/slices.png _ _
 
 
+* Collections #2
+
+Slice Loop
+
+.play ./resources/src/09_collections/2/main.go
+
+* Collections #3
+
+Map Loop
+
+.play ./resources/src/09_collections/3/main.go
+
+* Funciones como valores
+
+.play ./resources/src/10_functions_as_values/main.go
+
+* Creando tipos -> &, new y make 
+
+_make_: función built-in que se usa únicamente para allocar e inicializar slices, maps o channels. Se pasa el tipo, el tamaño y la capacidad. Como resultado obtenemos la variable en si, no un puntero
+
+	slice := make([]int, 0, 10)
+
+_new_: función built-in que se usa para allocar memoria, retorna un puntero al valor allocado con zero value
+
+	someVar := new(int)
+
+_&_: al igual que el new se utiliza para allocar memoria y retorna un puntero pero ademas nos permite inicializar atributos en variables complejas: 
+
+	type Dog struct {
+		Name string
+		Age  int
+	}
+
+	d := &Dog{Name: "Tom", Age: 14}
+
+* 1º Ejercicio
+
+Hacer un programa que reciba un parámetro *p* por consola y que cacule la suma de los valores *v* tales que *0*<=*v*<=*p* , siendo *v* un número divisible por *3* o por *5*
+
+- Ayuda para leer argumentos desde la consola
+
+	for i := 1; i < len(os.Args); i++ {
+		fmt.Println(os.Args[i])
+	}
+
+* Gorutines
+
+.play ./resources/src/14_gorutines/main.go
+
+* Defer
+
+.play ./resources/src/13_defer/main.go
+
+* Recover
+
+.play ./resources/src/16_recover/main.go /START OMIT/,/END OMIT/
 
 
+* Interfaces
+
+    type Animal interface {
+     	Eat()
+     	Talk()
+    }
+
+	type Dog struct {
+		Name string
+		Age  int
+	}
+
+	func (p *Dog) Eat() {
+		fmt.Printf("%s is eating... \n", p.Name)
+	}
+
+	func (p *Dog) Talk() {
+		fmt.Printf("%s is barking... \n", p.Name)
+	}
+
+* Interfaces continuación
+
+	type Lion struct {
+		Name string
+		Age  int
+	}
+
+	func (p *Lion) Eat() {
+		fmt.Printf("%s is eating... \n", p.Name)
+	}
+
+	func (p *Lion) Talk() {
+		fmt.Printf("%s is roaring... \n", p.Name)
+	}
+
+* Interfaces continuación
+
+.play ./resources/src/11_interfaces/main.go /^func main/,/^}/
+
+* Composition
+
+	type Animal struct {}
+
+	func (p *Animal) Eat() {
+		fmt.Printf("Is eating... \n")
+	}
+	func (p *Animal) Talk() {
+		fmt.Printf("talking... \n")
+	}
+
+    type Dog struct {
+        Animal
+        Name string
+        Age  int
+    }
+    func (p *Dog) Eat() {
+       fmt.Printf("%s is eating... \n", p.Name)
+    }
+    func (p *Dog) Talk() {
+       fmt.Printf("%s is barking... \n", p.Name)
+    }
+
+* Composition continuación
+
+	type Lion struct {
+		Animal
+		Name string
+		Age  int
+	}
+	func (p *Lion) Eat() {
+		fmt.Printf("%s is eating... \n", p.Name)
+	}
+	func (p *Lion) Talk() {
+		fmt.Printf("%s is roaring... \n", p.Name)
+	}
+    
+.play ./resources/src/15_composition/main.go /^func main/,/^}/
+
+* Errors
+
+.play ./resources/src/12_errors/main.go
+
+* Testing
+
+Golang posee un built-in testing framework 
+
+Esté es provisto mediante el package testing
+
+Todo archivo Go con el suffix “_test.go” es considerado un test suite en Go
+
+En cada test suite podemos correr:
+	- Test
+	- Benchmarks
+	- Examples
+
+* Testing continuación
+
+Cada TestXxx function en una test suite es un test
+
+Cada BenchmarkXxx function en una test suite es un benchmark
+
+Cada ExampleXxx function es una test suite is an example
+
+White box testing / Black box testing
+
+El comando “go test” corre los test del proyecto
+
+* Testing: Init
+
+	func TestMain(m *testing.M) {
+		before()
+
+		code := m.Run()
+
+		after()
+
+		os.Exit(code)
+	}
 
 
+* Testing: Test
+
+	//Basic Test
+	func TestXXX(t *testing.T) {
+		//t.Parallel()
+
+		result, err := add(a, b)
+
+		if err != nil {
+			t.Fatal("We got some error", err)
+
+			//Skip test
+			//t.Skip("We got some error", err)
+		}
+
+		expected := 6
+
+		if result != expected {
+			t.Fatalf("%d + %d Should be equals to %d", a, b, expected)
+		}
+	}
+
+* Testing: Benchmark
+
+	//Basic Benchmark
+	func BenchmarkXXX(bt *testing.B) {
+		for i := 0; i < bt.N; i++ {
+			add(a, b)
+		}
+
+		//Setting N limit
+		bt.N = 1000
+
+		//Reset timer
+		//b.ResetTimer()
+
+		for i := 0; i < bt.N; i++ {
+			add(a, b)
+		}
+
+		//Parallel
+		bt.RunParallel(
+			func(pb *testing.PB) {
+				for pb.Next() {
+					add(a, b)
+				}
+			}
+		)
+		
+	}
+
+* Testing: Examples
+	
+	//Basic Example
+	func ExampleXXX() {
+		result, _ := add(a, b)
+
+		fmt.Println(result)
+
+		// Output: 6
+	}
+
+
+- [[https://golang.org/pkg/strings/#example_Contains][strings contains example]]
+
+* Testing: Not native frameworks
+
+- [[https://github.com/franela/goblin][Goblin]]
+- [[https://github.com/stretchr/testify][Testify]]
+- [[https://github.com/onsi/ginkgo][Ginkgo]]
+- [[https://github.com/smartystreets/goconvey][GoConvey]]
+
+* Como seguir?
+
+- [[https://tour.golang.org][Tour Go]]
+- [[https://golang.org/doc/effective_go.html][Effective Go]]
+- [[https://gobyexample.com][Go By Example]]
+- [[https://golang.org/doc/code.html][How to Write Go Code]]
+- [[http://www.golangpatterns.info][Go Design Patterns]]
+- [[https://golang.org/pkg][Standar Library]]
+- [[https://github.com/golang/go/wiki][Awesome Go]]
