@@ -347,10 +347,9 @@ Hacer una funcion que reciba un parámetro *p* de tipo numérico y que devuelva 
 
 * 2º Ejercicio
 
-Modelar la funcionalidad para un sistema de cines que calcule los ingresos netos de una función en base a los asistentes y al precio base de la entrada. Existen cuatro tipos de asistentes y tienen las siguientes características:
+Modelar la funcionalidad para un sistema de cines que calcule los ingresos netos de una función en base a los asistentes y al precio base de la entrada. Existen tres tipos de asistentes y tienen las siguientes características:
 
 - Normales: Pagan el 100%
-- Menores: Se les hace 20% de descuento
 - Jubilados: Tienen un 50% de descuento
 - Invitados: No pagan nada
 
@@ -381,3 +380,4 @@ Maps
 - [[http://www.golangpatterns.info][Go Design Patterns]]
 - [[https://golang.org/pkg][Standar Library]]
 - [[https://github.com/golang/go/wiki][Awesome Go]]
+
