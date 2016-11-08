@@ -83,19 +83,19 @@ CockroachDB (beta)
 - Funciones son “first class citizen”, las funciones pueden ser pasadas como parámetros
 - Parámetros pasados siempre por “valor”
 - Punteros para pasar parámetros por “referencia”
-- GC
 - Composition
 - Interfaces
+- Garbage Collection (GC)
 - Built in Web Server
 - Built in Testing framework
 
 * Dinámica del workshop
 
-*Slides*
+*Slides*->* [[https://goo.gl/7OL3wm][https://goo.gl/7OL3wm]]
 
-*Ejercicios*Resueltos*
+*Ejercicios*->* [[https://goo.gl/R1hoSf][https://goo.gl/R1hoSf]]
 
-*Playground* [[https://play.golang.org/][https://play.golang.org/]]
+*¿Donde*jugamos?*Playground*->* [[https://play.golang.org][https://play.golang.org]]
 
 * Instalando GO!
 
@@ -244,7 +244,7 @@ Hacer una funcion que reciba un parámetro *p* de tipo numérico y que devuelva 
 		p  = &Vertex{1, 2} // has type *Vertex
 	)
 
-* Structs 
+* Structs continuación
 
 	type tree struct {
 		value       int
@@ -269,81 +269,59 @@ Hacer una funcion que reciba un parámetro *p* de tipo numérico y que devuelva 
 
 * Interfaces
 
-    type Animal interface {
-     	Eat()
-     	Talk()
-    }
+.play ./resources/src/11_interfaces/1/main.go
 
-	type Dog struct {
-		Name string
-		Age  int
+* Interfaces continuación
+
+	type Flash struct {
+		Alias string
+		Age   int
 	}
 
-	func (p *Dog) Eat() {
-		fmt.Printf("%s is eating... \n", p.Name)
-	}
-
-	func (p *Dog) Talk() {
-		fmt.Printf("%s is barking... \n", p.Name)
+	func (s *Flash) Powers() {
+		fmt.Printf("%s powers: %s", s.Alias, "speed")
 	}
 
 * Interfaces continuación
 
-	type Lion struct {
-		Name string
-		Age  int
-	}
-
-	func (p *Lion) Eat() {
-		fmt.Printf("%s is eating... \n", p.Name)
-	}
-
-	func (p *Lion) Talk() {
-		fmt.Printf("%s is roaring... \n", p.Name)
-	}
-
-* Interfaces continuación
-
-.play ./resources/src/11_interfaces/main.go /^func main/,/^}/
+.play ./resources/src/11_interfaces/2/main.go /^func main/,/^}/
 
 * Composition
 
-	type Animal struct {}
-
-	func (p *Animal) Eat() {
-		fmt.Printf("Is eating... \n")
-	}
-	func (p *Animal) Talk() {
-		fmt.Printf("talking... \n")
+	type SuperHero interface {
+		Powers()
 	}
 
-    type Dog struct {
-        Animal
-        Name string
-        Age  int
-    }
-    func (p *Dog) Eat() {
-       fmt.Printf("%s is eating... \n", p.Name)
-    }
-    func (p *Dog) Talk() {
-       fmt.Printf("%s is barking... \n", p.Name)
-    }
+	type Superman struct {
+		Alias string
+		Age   int
+	}
+
+	func (s *Superman) Powers() {
+		fmt.Printf("%s powers: %s", s.Alias, "invulnerability, heat vision, flight, speed")
+	}
+
+	type SuperBoy struct {
+		Superman
+	}
 
 * Composition continuación
 
-	type Lion struct {
-		Animal
-		Name string
-		Age  int
+.play ./resources/src/15_composition/1/main.go /^func main/,/^}/
+
+* Composition continuación
+
+	type SuperBoy struct {
+	    Superman
+	    Alias string
+	    Age   int
 	}
-	func (p *Lion) Eat() {
-		fmt.Printf("%s is eating... \n", p.Name)
-	}
-	func (p *Lion) Talk() {
-		fmt.Printf("%s is roaring... \n", p.Name)
+
+	func (s *SuperBoy) Powers() string {
+	    return fmt.Sprintf("powers: %s", "flight")
 	}
     
-.play ./resources/src/15_composition/main.go /^func main/,/^}/
+.play ./resources/src/15_composition/2/main.go /^func main/,/^}/
 
 * 2º Ejercicio
 
