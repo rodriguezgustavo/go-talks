@@ -2,10 +2,15 @@ package main
 
 import "fmt"
 
+var i int
+var f float64
+var b bool
+var s string
+
+func init(){
+	fmt.Println("Se ejecuta init")
+}
+
 func main() {
-	var i int
-	var f float64
-	var b bool
-	var s string
 	fmt.Printf("%v %v %v %q\n", i, f, b, s)
 }

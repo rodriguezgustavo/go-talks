@@ -38,6 +38,6 @@ func main() {
 		f := Fahrenheit(t)
 		c := Celsius(t)
 		fmt.Printf("%s = %s, %s = %s\n",
-			f, FToC(f), c, CToF(c))
+			f, FToC(f).String(), c, CToF(c).String())
 	}
 }

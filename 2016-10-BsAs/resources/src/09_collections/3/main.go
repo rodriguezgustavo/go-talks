@@ -5,15 +5,16 @@ import (
 )
 
 func main() {
-	mapType := make(map[int]int)
+	m := make(map[int]int) 
+	var m2 map[int]int 
 
-	mapType[1] = 1
-	mapType[2] = 2
-	mapType[3] = 3
-	mapType[4] = 4
-	mapType[5] = 5
+	m[1] = 1
+	m[2] = 2
+	m[3] = 3
+	delete(m,3)
 
-	for key, value := range mapType {
+	fmt.Println(m2==nil) //panic if m2[0]=1
+	for key, value := range m {
 		fmt.Printf("Key: %d, Value: %d \n", key, value)
 	}
 }

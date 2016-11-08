@@ -5,9 +5,14 @@ import (
 )
 
 func main() {
-	arrayType := [5]string{"1", "2", "3", "4", "5"}
+	a := [2]string{"1", "2"}
+	b := [...]string{"1", "2"}
+	c := [2]string{"1","3"}
 
-	for _, value := range arrayType {
+	fmt.Println(c[0], c[len(a)-1] )
+	fmt.Println( a == b, a==c)
+
+	for _, value := range a {
 		fmt.Print(value+" ")
 	}
 }

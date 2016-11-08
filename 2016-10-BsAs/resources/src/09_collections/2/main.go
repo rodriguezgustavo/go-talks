@@ -5,15 +5,15 @@ import (
 )
 
 func main() {
-	sliceType := make([]int, 4, 4)
+	a1 := [...]int{1,2,3}
 
-	sliceType = append(sliceType, 1)
-	sliceType = append(sliceType, 2)
-	sliceType = append(sliceType, 3)
-	sliceType = append(sliceType, 4)
-	sliceType = append(sliceType, 5)
+	s1 := a1[0:2] // same as s1:=a1[:2]
+	var s2 []int  // len(s2) == 0 , s2== nil
+	s3 := make([]int, 2) //len(s3) ==2 , cap==2. Same as make([]int,2,2)
+	
+	s1 = append(s1, 5)
+	s2 = append(s2, 5)
+	s3 = append(s3, 5)
 
-	for _, value := range sliceType {
-		fmt.Print(value)
-	}
+	fmt.Println(s1 , s2 , s3)
 }
