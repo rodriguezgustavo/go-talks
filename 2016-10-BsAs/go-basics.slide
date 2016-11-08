@@ -416,7 +416,7 @@ Cada TestXxx function en una test suite es un test
 
 Cada BenchmarkXxx function en una test suite es un benchmark
 
-Cada ExampleXxx function es una test suite is an example
+Cada ExampleXxx function en una test suite es un example
 
 White box testing / Black box testing
 
