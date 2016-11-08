@@ -313,8 +313,6 @@ Hacer una funcion que reciba un parámetro *p* de tipo numérico y que devuelva 
 
 	type SuperBoy struct {
 	    Superman
-	    Alias string
-	    Age   int
 	}
 
 	func (s *SuperBoy) Powers() string {
